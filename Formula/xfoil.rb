@@ -15,7 +15,7 @@ class Xfoil < Formula
     system "make", "-C", "plotlib"
     system "make", "-C", "bin", "-f", "Makefile_gfortran",
            "CHK=-fallow-argument-mismatch",
-           "PLTLIB=-L#{lib} -lX11",
+           "PLTLIB=-lX11",
            "BINDIR=#{bin}"
     doc.install "README", "sessions.txt", "version_notes.txt", "xfoil_doc.txt"
   end
