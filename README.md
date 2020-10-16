@@ -1,4 +1,4 @@
-# Jberkman Tapbarn
+# jberkman Tap Barn
 
 ## How do I install these formulae?
 `brew install jberkman/tapbarn/<formula>`
