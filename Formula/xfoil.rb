@@ -12,15 +12,13 @@ class Xfoil < Formula
   depends_on "libx11"
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
-    # Remove unrecognized options if warned by configure
+    bin.mkpath
     system "cp", "plotlib/config.make.gfortranDP", "plotlib/config.make"
     system "make", "-C", "plotlib"
     system "make", "-C", "bin", "-f", "Makefile_gfortran",
            "CHK=-fallow-argument-mismatch",
            "PLTLIB=-L/usr/local/lib -lX11",
-           "BINDIR=#{prefix}/bin"
-    # system "cmake", ".", *std_cmake_args
+           "BINDIR=#{bin}"
   end
 
   test do
