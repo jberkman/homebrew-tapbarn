@@ -13,8 +13,9 @@ class Xfoil < Formula
     doc.mkpath
     cp "plotlib/config.make.gfortranDP", "plotlib/config.make"
     system "make", "-C", "plotlib"
+    # Use -std=legacy via: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=59513
     system "make", "-C", "bin", "-f", "Makefile_gfortran",
-           "CHK=-fallow-argument-mismatch",
+           "CHK=-std=legacy",
            "PLTLIB=-lX11",
            "BINDIR=#{bin}"
     doc.install "README", "sessions.txt", "version_notes.txt", "xfoil_doc.txt"
